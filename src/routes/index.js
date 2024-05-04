@@ -3,12 +3,10 @@ const router = express.Router();
 const controller = require('../controllers/controller');
 
 // Definir rutas
-router.get('/datos', controller.obtenerDatos);
+router.get('/persona', controller.obtenerListaPersona);
+router.get('/persona/:id', controller.obtenerPersonaPorId);
 router.post('/persona', controller.registrarPersona);
-
-router.get('/ruta', controller.getDatos);
-router.post('/ruta', controller.crearDato);
-router.put('/ruta/:id', controller.actualizarDato);
-router.delete('/ruta/:id', controller.eliminarDato);
+router.put('/persona/:id', controller.actualizarPersona);
+router.delete('/persona/:id', controller.eliminarPersona);
 
 module.exports = router;
