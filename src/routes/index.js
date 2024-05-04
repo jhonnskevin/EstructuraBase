@@ -4,6 +4,8 @@ const controller = require('../controllers/controller');
 
 // Definir rutas
 router.get('/datos', controller.obtenerDatos);
+router.post('/persona', controller.registrarPersona);
+
 router.get('/ruta', controller.getDatos);
 router.post('/ruta', controller.crearDato);
 router.put('/ruta/:id', controller.actualizarDato);

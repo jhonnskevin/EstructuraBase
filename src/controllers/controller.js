@@ -15,6 +15,37 @@ const controller = {
         });
     },
 
+    // Función para registrar una nueva persona
+    registrarPersona: (req, res) => {
+        const { nombre, apellido, edad } = req.body;
+
+        // Validar si se proporcionaron todos los datos necesarios
+        if (!nombre || !apellido || !edad) {
+        return res.status(400).json({ error: 'Todos los campos son requeridos' });
+        }
+
+        // Crear una nueva persona en la base de datos
+        const sql = 'INSERT INTO persona (nombre, apellido, edad) VALUES (?, ?, ?)';
+        const values = [nombre, apellido, edad];
+
+        db.query(sql, values, (err, result) => {
+        if (err) {
+            console.error('Error al registrar persona:', err);
+            return res.status(500).json({ error: 'Error interno del servidor' });
+        }
+
+        // Si se insertó correctamente, devolver la nueva persona creada
+        const nuevaPersona = {
+            id: result.insertId,
+            nombre,
+            apellido,
+            edad
+        };
+
+        res.status(201).json(nuevaPersona);
+        });
+    },
+
   getDatos: (req, res) => {
     // Lógica para obtener datos
     res.send('Obtener datos');
