@@ -2,7 +2,7 @@ const { Request, Response } = require('express');
 const db = require('../models/db');
 
 const controller = {
-    obtenerListaPersona: (res) => {
+    obtenerListaPersona: (req, res) => {
         const sql = 'SELECT * FROM persona';
 
         db.query(sql, (err, results) => {

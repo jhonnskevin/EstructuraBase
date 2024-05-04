@@ -1,6 +1,9 @@
 root
 Jazz184*
 
+--habilitar cors para entorno localhost
+npm install cors
+
 http://localhost:3000/api/[ruta]
 
 --Establecer configuracion de conexion remota
